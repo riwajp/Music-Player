@@ -6,7 +6,8 @@ class MusicList{
 	public:
 		int size;
 		MusicItem *items;
-		MusicItem *now_playing;
+		MusicItem *now_playing=NULL;
+	
 		
 		MusicList(int psize, MusicItem *pitems){
         size = psize;
@@ -43,11 +44,13 @@ class MusicList{
 		if(click_handler->triggerAction(event)=="play new"+(items+i)->text){
 		
 		
-				std::cout<<(items+i)->text;
+				//std::cout<<(items+i)->text;
 				(items+i)->load();
 				
-				now_playing=(items+i);
+			
 			(items+i)->play();
+			
+				now_playing=(items+i);
 						
 }	
         	

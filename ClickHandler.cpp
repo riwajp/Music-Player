@@ -1,6 +1,7 @@
 #include <SFML/Window.hpp>
 #include <iostream>
 
+#pragma once
 struct ClickAction{
 	float x;
 	float y;
@@ -41,7 +42,7 @@ class ClickHandler{
 					
 					if(x>action.x && x<action.x+action.x_offset &&
 						y>action.y && y<action.y+action.y_offset ){
-							std::cout<<action.action;
+							//std::cout<<action.action;
 							return action.action;
 						}
 				}

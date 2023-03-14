@@ -52,7 +52,6 @@ class MusicItem:public ListItem{
 	
 	void play(){
 		isPlaying=true;
-				std::cout<<"Playing\n\n";
 
 	music.play();
 		
@@ -65,7 +64,7 @@ class MusicItem:public ListItem{
 		isLoaded=true;
 		std::string p;
 		music.openFromFile(value);
-		std::cout<<p<<std::endl;
+		//std::cout<<p<<std::endl;
 		
 
 	}

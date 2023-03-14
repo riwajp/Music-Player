@@ -69,7 +69,7 @@ public:
 			sf::Vector2f position = rec.getPosition();
 		
 			if(y>=position.y && y<=position.y+60){
-				std::cout<<(items+i)->value<<std::endl;
+				//std::cout<<(items+i)->value<<std::endl;
 				
 			
 			

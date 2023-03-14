@@ -41,7 +41,8 @@ int main()
     
     
     
-    sf::RenderWindow window(sf::VideoMode(950,800),"Musisssssc Plssayer");
+    
+    sf::RenderWindow window(sf::VideoMode(950,800),"Musissssc Player");
     window.setVerticalSyncEnabled(true); 
 	window.setFramerateLimit(10); 
 	
@@ -59,7 +60,7 @@ int main()
 	
 			list.print(&window,&event,&click_handler);
 			player.now_playing=list.now_playing;
-			player.print(&window);
+			player.print(&window,&event,&click_handler);
 			window.display();
 			
 }
