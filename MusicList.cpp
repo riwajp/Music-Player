@@ -1,6 +1,6 @@
 #include <iostream>
 #include "MusicItem.cpp"
-
+#include "ClickHandler.cpp"
 
 class MusicList{
 	public:
@@ -16,7 +16,8 @@ class MusicList{
     
     
     
-    void print(sf::RenderWindow *window, sf::Event *event){
+    void print(sf::RenderWindow *window, sf::Event *event,ClickHandler *click_handler){
+    
     	int x=0;
     	int y=200;
     	
@@ -33,30 +34,22 @@ class MusicList{
         
 			
         (items+i)->render(window,color,x,y,950.f,60.f,18,sf::Color(222,222,222),font,50,20);
+        click_handler->addAction(x,y,950.f,60.f,"play new"+(items+i)->text);
 		
 		
-		if(event->type==sf::Event::MouseButtonPressed && (event->mouseButton).button==sf::Mouse::Left){
-			int mx=(event->mouseButton).x;
-			int my=(event->mouseButton).y;
-			
-			
 		
-			if(my>=y && my<=y+60){
-			
+		
+				
+		if(click_handler->triggerAction(event)=="play new"+(items+i)->text){
+		
+		
 				std::cout<<(items+i)->text;
 				(items+i)->load();
 				
 				now_playing=(items+i);
 			(items+i)->play();
 						
-
-				
-			}
-		
-		}
-		
-		
-        	
+}	
         	
         	y+=60;
         	

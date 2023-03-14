@@ -50,9 +50,11 @@ class MusicPlayer{
 			drawButton(window,std::string(now_playing->isPlaying?"./Sprites/_play.png":"./Sprites/_stop.png"),bc_x,bc_y,0.07,0.07);
 			drawButton(window,std::string("./Sprites/_next.png"),bc_x+100,bc_y,0.07,0.07);
 			drawButton(window,std::string("./Sprites/_previous.png"),bc_x-100,bc_y,0.07,0.07);
+				window->draw(now_playing_name);
+			
 	}
 
-		window->draw(now_playing_name);
+	
 		
 	
 

@@ -5,7 +5,6 @@
 #include "MusicPlayer.cpp"
 #include <SFML/Graphics.hpp>
 
-#include "ClickHandler.cpp"
 
 
 using namespace std;
@@ -13,6 +12,7 @@ using namespace std;
 
 int main()
 {
+
 	FileScanner scanner;
 	MusicPlayer player;
 	
@@ -41,13 +41,14 @@ int main()
     
     
     
-    sf::RenderWindow window(sf::VideoMode(950,800),"Musisssssssc Player");
+    sf::RenderWindow window(sf::VideoMode(950,800),"Musisssssc Plssayer");
     window.setVerticalSyncEnabled(true); 
 	window.setFramerateLimit(10); 
 	
 
 	sf::Event event;
 	while(window.isOpen()){
+	ClickHandler click_handler;
 	while(window.pollEvent(event)){	
 			
 		if(event.type==sf::Event::Closed) {
@@ -56,7 +57,7 @@ int main()
 		
 	}
 	
-			list.print(&window,&event);
+			list.print(&window,&event,&click_handler);
 			player.now_playing=list.now_playing;
 			player.print(&window);
 			window.display();

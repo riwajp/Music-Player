@@ -1,4 +1,5 @@
-#include <SFML/windows.hpp>
+#include <SFML/Window.hpp>
+#include <iostream>
 
 struct ClickAction{
 	float x;
@@ -24,13 +25,31 @@ class ClickHandler{
 			action.action=p_action;
 			
 			actions[++actions_last_index]=action;
+			//std::cout<<actions_last_index<<std::endl;
 			
 		}
 		
-		void triggerAction(sf::Event *event){
-			cout<<x<<","<<y<<endl;
+		std::string triggerAction(sf::Event *event){
+			if(event->type==sf::Event::MouseButtonPressed && (event->mouseButton).button==sf::Mouse::Left){
+				//std::cout<<(event->mouseButton).x<<","<<(event->mouseButton).y<<std::endl;
+				float x=(event->mouseButton).x;
+				float y=(event->mouseButton).y;
+				
+				for(int i=0;i<=actions_last_index;i++){
+					ClickAction action=actions[i];
+					//std::cout<<std::endl<<action.x<<","<<action.x_offset<<std::endl<<action.y<<","<<action.y_offset<<std::endl;
+					
+					if(x>action.x && x<action.x+action.x_offset &&
+						y>action.y && y<action.y+action.y_offset ){
+							std::cout<<action.action;
+							return action.action;
+						}
+				}
 			
 		}
+			return "nothing";
+	}
+
 		
 	
 	

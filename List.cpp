@@ -9,6 +9,7 @@
 
 #include <mmsystem.h>
 
+
 class List
 {
 
@@ -58,7 +59,10 @@ public:
 		}
 		
 			rec.setPosition(x,y);
+		
+		
 		if(event->type==sf::Event::MouseButtonPressed && (event->mouseButton).button==sf::Mouse::Left){
+		
 			int x=(event->mouseButton).x;
 			int y=(event->mouseButton).y;
 			
