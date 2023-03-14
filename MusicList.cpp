@@ -7,6 +7,7 @@ class MusicList{
 		int size;
 		MusicItem *items;
 		MusicItem *now_playing=NULL;
+		int now_playing_index=-1;
 	
 		
 		MusicList(int psize, MusicItem *pitems){
@@ -16,7 +17,24 @@ class MusicList{
     
     
     
-    
+	void playNext(){
+		now_playing_index=(now_playing_index+1)%size;
+		now_playing=(items+now_playing_index);
+		now_playing->load();
+		now_playing->play();
+		
+			
+		}
+		
+		
+			void playPrevious(){
+		now_playing_index=(now_playing_index-1)==-1?size-1 : now_playing_index-1;
+		now_playing=(items+now_playing_index);
+		now_playing->load();
+		now_playing->play();
+		
+			
+		}
     void print(sf::RenderWindow *window, sf::Event *event,ClickHandler *click_handler){
     
     	int x=0;
@@ -51,6 +69,7 @@ class MusicList{
 			(items+i)->play();
 			
 				now_playing=(items+i);
+				now_playing_index=i;
 						
 }	
         	

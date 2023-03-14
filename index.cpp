@@ -1,6 +1,5 @@
 #include <iostream>
 #include "FileScanner.cpp"
-#include "MusicList.cpp"
 
 #include "MusicPlayer.cpp"
 #include <SFML/Graphics.hpp>
@@ -14,7 +13,7 @@ int main()
 {
 
 	FileScanner scanner;
-	MusicPlayer player;
+
 	
 	string * files=scanner.scan("./Music","ogg");
 	int i=0;
@@ -36,13 +35,14 @@ int main()
     };
     
     MusicList list(i,list_items);
+    	MusicPlayer player(&list);
+
     
     
     
     
     
-    
-    sf::RenderWindow window(sf::VideoMode(950,800),"Musissssc Player");
+    sf::RenderWindow window(sf::VideoMode(950,800),"Musissssssssc Player");
     window.setVerticalSyncEnabled(true); 
 	window.setFramerateLimit(10); 
 	
@@ -59,7 +59,7 @@ int main()
 	}
 	
 			list.print(&window,&event,&click_handler);
-			player.now_playing=list.now_playing;
+		player.now_playing=list.now_playing;
 			player.print(&window,&event,&click_handler);
 			window.display();
 			
