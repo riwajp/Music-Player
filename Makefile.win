@@ -1,0 +1,61 @@
+# Project: Music Player
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = indexold.o List.o ListItem.o index1.o FileScanner.o MusicPlayer.o gui.o gui1.o MusicItem.o MusicList.o index.o MusicItemold.o
+LINKOBJ  = indexold.o List.o ListItem.o index1.o FileScanner.o MusicPlayer.o gui.o gui1.o MusicItem.o MusicList.o index.o MusicItemold.o
+LIBS     = -L"D:/cppppp/MinGW/lib" -L"D:/cppppp/MinGW/x86_64-w64-mingw32/lib" -static-libstdc++ -static-libgcc -L"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/lib" -lwinmm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+INCS     = -I"D:/cppppp/MinGW/include" -I"D:/cppppp/MinGW/x86_64-w64-mingw32/include" -I"D:/cppppp/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include" -I"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/include"
+CXXINCS  = -I"D:/cppppp/MinGW/include" -I"D:/cppppp/MinGW/x86_64-w64-mingw32/include" -I"D:/cppppp/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include" -I"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/include"
+BIN      = MusicPlayer.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+indexold.o: indexold.cpp
+	$(CPP) -c indexold.cpp -o indexold.o $(CXXFLAGS)
+
+List.o: List.cpp
+	$(CPP) -c List.cpp -o List.o $(CXXFLAGS)
+
+ListItem.o: ListItem.cpp
+	$(CPP) -c ListItem.cpp -o ListItem.o $(CXXFLAGS)
+
+index1.o: index1.cpp
+	$(CPP) -c index1.cpp -o index1.o $(CXXFLAGS)
+
+FileScanner.o: FileScanner.cpp
+	$(CPP) -c FileScanner.cpp -o FileScanner.o $(CXXFLAGS)
+
+MusicPlayer.o: MusicPlayer.cpp
+	$(CPP) -c MusicPlayer.cpp -o MusicPlayer.o $(CXXFLAGS)
+
+gui.o: gui.cpp
+	$(CPP) -c gui.cpp -o gui.o $(CXXFLAGS)
+
+gui1.o: gui1.cpp
+	$(CPP) -c gui1.cpp -o gui1.o $(CXXFLAGS)
+
+MusicItem.o: MusicItem.cpp
+	$(CPP) -c MusicItem.cpp -o MusicItem.o $(CXXFLAGS)
+
+MusicList.o: MusicList.cpp
+	$(CPP) -c MusicList.cpp -o MusicList.o $(CXXFLAGS)
+
+index.o: index.cpp
+	$(CPP) -c index.cpp -o index.o $(CXXFLAGS)
+
+MusicItemold.o: MusicItemold.cpp
+	$(CPP) -c MusicItemold.cpp -o MusicItemold.o $(CXXFLAGS)
