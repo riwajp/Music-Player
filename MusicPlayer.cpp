@@ -40,7 +40,7 @@ class MusicPlayer{
 				
 		void print(sf::RenderWindow *window,sf::Event *event,ClickHandler * click_handler){
 				sf::RectangleShape main_rec(sf::Vector2f(950.f,200.f));
-		main_rec.setFillColor(sf::Color(44,51,51));
+		main_rec.setFillColor(sf::Color(44,51,51,80));
 		main_rec.setPosition(0,0);
 			window->draw(main_rec);
 		if( now_playing!=NULL && now_playing->isLoaded ){

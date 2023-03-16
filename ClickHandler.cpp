@@ -27,13 +27,20 @@ class ClickHandler{
 			action.y_offset_down=y_offset_down;
 			action.action=p_action;
 			
+			
 			actions[++actions_last_index]=action;
 			//std::cout<<actions_last_index<<std::endl;
 			
 		}
-		
+	
 		std::string triggerAction(sf::Event *event){
-			if(event->type==sf::Event::MouseButtonPressed && (event->mouseButton).button==sf::Mouse::Left){
+			std::string triggered_action;
+		//std::cout<<(can_trigger?"Trueee":"False")<<std::endl;
+
+		
+			
+			if(event!=NULL && event->type==sf::Event::MouseButtonPressed && (event->mouseButton).button==sf::Mouse::Left){
+				
 				//std::cout<<(event->mouseButton).x<<","<<(event->mouseButton).y<<std::endl;
 				float x=(event->mouseButton).x;
 				float y=(event->mouseButton).y;
@@ -45,14 +52,19 @@ class ClickHandler{
 					
 					if(x>action.x-action.x_offset_left && x<action.x+action.x_offset_right &&
 						y>action.y-action.y_offset_up && y<action.y+action.y_offset_down ){
-							//std::cout<<action.action;
-							return action.action;
+							std::cout<<action.action;
+							triggered_action= action.action;
 						}
 				}
 			
 		}
-			return "nothing";
-	}
+
+			
+
+	
+
+        return triggered_action;
+}
 
 		
 	

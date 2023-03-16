@@ -53,14 +53,14 @@ class MusicList{
 			}
 		}
     void print(sf::RenderWindow *window, sf::Event *event,ClickHandler *click_handler,int *v_position){
-    	int x=0;
+    	int x=30;
     	int y;
-    	if(*v_position<=200 && *v_position>=200-(size*60-10*60)){
+    	if(*v_position<=210 && *v_position>=210-(size*70-9*70)){
 
 	y=*v_position;
 		
 		}else{
-			y=*v_position>200?200 : 200-(size*60-10*60);
+			y=*v_position>210?210 : 210-(size*70-9*70);
 			*v_position=y;
 			std::cout<<*v_position<<std::endl;
 		}
@@ -75,17 +75,17 @@ class MusicList{
     	sf::Font font;
     	font.loadFromFile("Montserrat.ttf");
     	sf::Color dark=sf::Color(33,34,37);
-    	sf::Color light=sf::Color(55,57,62);
+    	sf::Color light=sf::Color(55,57,62,150);
     
     	
     	for (int i = 0; i < size; i++)
         {
        
-        sf::Color color=i%2==0 ? dark : light;
+        sf::Color color=i%2==0 ? light : light;
         
-		if(y>=200 && y<=200+600){
+		if(y>=210 && y<=210+560){
 		
-        (items+i)->render(window,color,x,y,950.f,60.f,18,sf::Color(222,222,222),font,50,20);
+        (items+i)->render(window,color,x,y,890.f,60.f,18,sf::Color(222,222,222),font,50,20);
         click_handler->addAction(x,y,0,950.f,0,60.f,"play new"+(items+i)->text);
     }
 		
@@ -107,7 +107,7 @@ class MusicList{
 						
 }	
         	
-        	y+=60;
+        	y+=70;
         	
            
         }

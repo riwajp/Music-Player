@@ -35,6 +35,10 @@ class MusicItem:public ListItem{
 		rec.setPosition(x,y);
 	
 		sf::Text dtext;
+		 if (text.length() > 70) {
+        text = text.substr(0, 70) + "...";
+        
+    } 
 		dtext.setString(text);
 		dtext.setFont(font);
 		dtext.setCharacterSize(fsize); 

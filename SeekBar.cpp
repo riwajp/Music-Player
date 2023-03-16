@@ -61,15 +61,15 @@ class SeekBar{
 		
 		float cwidth=(float)clength/length*total_width;
 		
-		sf::RectangleShape rec_filled(sf::Vector2f(cwidth,18.f));
-		rec_filled.setFillColor(sf::Color(134,134,135));
+		sf::RectangleShape rec_filled(sf::Vector2f(cwidth,7.f));
+		rec_filled.setFillColor(sf::Color(79,179,196));
 		rec_filled.setPosition(50,96);
 		
 		
 		//==============
 		
-		sf::RectangleShape rec_empty(sf::Vector2f(total_width-cwidth,10.f));
-		rec_empty.setFillColor(sf::Color(67,68,69));
+		sf::RectangleShape rec_empty(sf::Vector2f(total_width-cwidth,5.f));
+		rec_empty.setFillColor(sf::Color(181,235,245));
 		rec_empty.setPosition(50+cwidth,100);
 		
 		
@@ -77,7 +77,7 @@ class SeekBar{
         	window->draw(rec_empty);
         	window->draw(dtext);
         	window->draw(ctext);
-	drawButton(window,"./Sprites/seek.png",40+cwidth,87,0.6,0.6);
+	drawButton(window,"./Sprites/seek.png",40+cwidth,85,0.5,0.5);
 		click_handler->addAction(475,100,425.f,425.f,9.f,9.f,"seek");
 			if(click_handler->triggerAction(event)=="seek"){
 				float x=(event->mouseButton).x;
