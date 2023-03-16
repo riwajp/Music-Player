@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = indexold.o List.o ListItem.o index1.o FileScanner.o MusicPlayer.o gui.o gui1.o MusicItem.o MusicList.o index.o MusicItemold.o ClickHandler.o
-LINKOBJ  = indexold.o List.o ListItem.o index1.o FileScanner.o MusicPlayer.o gui.o gui1.o MusicItem.o MusicList.o index.o MusicItemold.o ClickHandler.o
+OBJ      = indexold.o List.o ListItem.o index1.o FileScanner.o MusicPlayer.o gui.o gui1.o MusicItem.o MusicList.o index.o MusicItemold.o ClickHandler.o SeekBar.o
+LINKOBJ  = indexold.o List.o ListItem.o index1.o FileScanner.o MusicPlayer.o gui.o gui1.o MusicItem.o MusicList.o index.o MusicItemold.o ClickHandler.o SeekBar.o
 LIBS     = -L"D:/cppppp/MinGW/lib" -L"D:/cppppp/MinGW/x86_64-w64-mingw32/lib" -static-libstdc++ -static-libgcc -L"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/lib" -lwinmm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INCS     = -I"D:/cppppp/MinGW/include" -I"D:/cppppp/MinGW/x86_64-w64-mingw32/include" -I"D:/cppppp/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include" -I"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/include"
 CXXINCS  = -I"D:/cppppp/MinGW/include" -I"D:/cppppp/MinGW/x86_64-w64-mingw32/include" -I"D:/cppppp/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include" -I"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/include"
@@ -62,3 +62,6 @@ MusicItemold.o: MusicItemold.cpp
 
 ClickHandler.o: ClickHandler.cpp
 	$(CPP) -c ClickHandler.cpp -o ClickHandler.o $(CXXFLAGS)
+
+SeekBar.o: SeekBar.cpp
+	$(CPP) -c SeekBar.cpp -o SeekBar.o $(CXXFLAGS)

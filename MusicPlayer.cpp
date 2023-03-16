@@ -5,11 +5,12 @@
 #include "MusicList.cpp"
 #include <string>
 #include "ClickHandler.cpp"
-
+#include "SeekBar.cpp"
 
 
 class MusicPlayer{
 	public:
+		SeekBar seekbar;
 		MusicItem * now_playing=NULL;
 		MusicList * list;
 		MusicPlayer(MusicList * list){
@@ -58,11 +59,11 @@ class MusicPlayer{
 		
 		
 		float bc_x=460;
-		float bc_y=130;
+		float bc_y=140;
 	
 			
 			drawButton(window,std::string(now_playing->isPlaying?"./Sprites/_pause.png":"./Sprites/_play.png"),bc_x,bc_y,0.05,0.05);
-			click_handler->addAction(bc_x,bc_y,50.f,70.f,now_playing->isPlaying?"pause":"play");
+			click_handler->addAction(bc_x,bc_y,20.f,20.f,30.f,30.f,now_playing->isPlaying?"pause":"play");
 			
 			if(click_handler->triggerAction(event)=="pause"){
 				now_playing->pause();
@@ -72,8 +73,8 @@ class MusicPlayer{
 			
 			
 			
-			drawButton(window,std::string("./Sprites/_next.png"),bc_x+100,bc_y,0.05,0.05);
-			click_handler->addAction(bc_x+100,bc_y,50.f,70.f,"play next");
+			drawButton(window,std::string("./Sprites/_next.png"),bc_x+80,bc_y,0.05,0.05);
+			click_handler->addAction(bc_x+80,bc_y,20.f,20.f,30.f,30.f,"play next");
 			if(click_handler->triggerAction(event)=="play next"){
 				list->playNext();
 			}
@@ -81,13 +82,27 @@ class MusicPlayer{
 			
 			
 			
-			drawButton(window,std::string("./Sprites/_previous.png"),bc_x-100,bc_y,0.05,0.05);
-			click_handler->addAction(bc_x-100,bc_y,50.f,70.f,"play previous");
+			drawButton(window,std::string("./Sprites/_previous.png"),bc_x-80,bc_y,0.05,0.05);
+			click_handler->addAction(bc_x-80,bc_y,20.f,20.f,30.f,30.f,"play previous");
 				if(click_handler->triggerAction(event)=="play previous"){
 				list->playPrevious();
 			}
 			
+			
+				
+			drawButton(window,std::string(list->shuffle?"./Sprites/_shuffle.png":"./Sprites/_unshuffle.png"),bc_x+160,bc_y,list->shuffle?0.06:0.1,list->shuffle?0.06:0.1);
+			click_handler->addAction(bc_x+160,bc_y,20.f,20.f,30.f,30.f,list->shuffle?"unshuffle":"shuffle");
+			
+			if(click_handler->triggerAction(event)=="shuffle"){
+				std::cout<<"Shuffle"<<std::endl;
+				list->shuffle=true;
+			}else if(click_handler->triggerAction(event)=="unshuffle"){
+					std::cout<<"Unshuffle"<<std::endl;
+					list->shuffle=false;
+			}
+			
 			window->draw(now_playing_name);
+			seekbar.render(window,now_playing,click_handler,event);
 			
 	}
 

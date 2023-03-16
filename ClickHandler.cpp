@@ -5,8 +5,8 @@
 struct ClickAction{
 	float x;
 	float y;
-	float x_offset;
-	float y_offset;
+	float x_offset_left,x_offset_right;
+	float y_offset_up,y_offset_down;
 	std::string action;
 	
 };
@@ -17,12 +17,14 @@ class ClickHandler{
 		int actions_last_index=-1;
 		//sf::Event *event;
 	
-		void addAction(float x, float y, float x_offset,float y_offset,std::string p_action){
+		void addAction(float x, float y, float x_offset_left,float x_offset_right,float y_offset_up,float y_offset_down,std::string p_action){
 			ClickAction action;
 			action.x=x;
 			action.y=y;
-			action.x_offset=x_offset;
-			action.y_offset=y_offset;
+			action.x_offset_left=x_offset_left;
+			action.x_offset_right=x_offset_right;
+			action.y_offset_up=y_offset_up;
+			action.y_offset_down=y_offset_down;
 			action.action=p_action;
 			
 			actions[++actions_last_index]=action;
@@ -35,13 +37,14 @@ class ClickHandler{
 				//std::cout<<(event->mouseButton).x<<","<<(event->mouseButton).y<<std::endl;
 				float x=(event->mouseButton).x;
 				float y=(event->mouseButton).y;
+				std::cout<<x<<","<<y<<std::endl;
 				
 				for(int i=0;i<=actions_last_index;i++){
 					ClickAction action=actions[i];
 					//std::cout<<std::endl<<action.x<<","<<action.x_offset<<std::endl<<action.y<<","<<action.y_offset<<std::endl;
 					
-					if(x>action.x && x<action.x+action.x_offset &&
-						y>action.y && y<action.y+action.y_offset ){
+					if(x>action.x-action.x_offset_left && x<action.x+action.x_offset_right &&
+						y>action.y-action.y_offset_up && y<action.y+action.y_offset_down ){
 							//std::cout<<action.action;
 							return action.action;
 						}

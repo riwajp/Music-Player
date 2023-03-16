@@ -4,6 +4,8 @@
 
 class MusicList{
 	public:
+		bool shuffle=false;
+		int position=0;
 		int size;
 		MusicItem *items;
 		MusicItem *now_playing=NULL;
@@ -19,7 +21,10 @@ class MusicList{
     
 	void playNext(){
 		now_playing_index=(now_playing_index+1)%size;
-		now_playing=(items+now_playing_index);
+		srand (time(NULL));
+		int random=rand()%size;
+		std::cout<<random<<std::endl;
+		now_playing=shuffle?(items+random):(items+now_playing_index);
 		now_playing->load();
 		now_playing->play();
 		
@@ -35,10 +40,25 @@ class MusicList{
 		
 			
 		}
-    void print(sf::RenderWindow *window, sf::Event *event,ClickHandler *click_handler){
-    
+    void print(sf::RenderWindow *window, sf::Event *event,ClickHandler *click_handler,int *v_position){
     	int x=0;
-    	int y=200;
+    	int y;
+    	if(*v_position<=200 && *v_position>=200-(size*60-10*60)){
+
+	y=*v_position;
+		
+		}else{
+			y=*v_position>200?200 : 200-(size*60-10*60);
+			*v_position=y;
+			std::cout<<*v_position<<std::endl;
+		}
+
+    
+    
+    		
+    	
+			
+			
     	
     	sf::Font font;
     	font.loadFromFile("Montserrat.ttf");
@@ -51,9 +71,11 @@ class MusicList{
        
         sf::Color color=i%2==0 ? dark : light;
         
-			
+		if(y>=200 && y<=200+600){
+		
         (items+i)->render(window,color,x,y,950.f,60.f,18,sf::Color(222,222,222),font,50,20);
-        click_handler->addAction(x,y,950.f,60.f,"play new"+(items+i)->text);
+        click_handler->addAction(x,y,0,950.f,0,60.f,"play new"+(items+i)->text);
+    }
 		
 		
 		
