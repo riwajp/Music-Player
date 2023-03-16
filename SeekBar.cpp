@@ -10,9 +10,11 @@ class SeekBar{
 	void drawButton(sf::RenderWindow * window,std::string image,float x, float y,float scale_x,float scale_y){
 			sf::Texture texture;
 			texture.loadFromFile(image);
+			texture.setSmooth(true);
 			sf::Sprite sprite(texture);
 			sprite.setScale(scale_x,scale_y);
 			sprite.setPosition(x,y);
+			
 		
 			
 			

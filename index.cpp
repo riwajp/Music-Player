@@ -40,9 +40,9 @@ int main()
     
     
     
-    sf::RenderWindow window(sf::VideoMode(950,800),"Mussissasssssssssssss Player");
+    sf::RenderWindow window(sf::VideoMode(950,800),"Mussisssssssssssss Player");
     window.setVerticalSyncEnabled(true); 
-	window.setFramerateLimit(12); 
+	window.setFramerateLimit(10); 
 	
 
 	sf::Event event;

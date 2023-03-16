@@ -5,6 +5,7 @@
 class MusicList{
 	public:
 		bool shuffle=false;
+		bool repeat=false;
 		int position=0;
 		int size;
 		MusicItem *items;
@@ -20,11 +21,13 @@ class MusicList{
     
     
 	void playNext(){
-		now_playing_index=(now_playing_index+1)%size;
+		
 		srand (time(NULL));
 		int random=rand()%size;
-		std::cout<<random<<std::endl;
+	
+		now_playing_index=shuffle?random:(now_playing_index+1)%size;
 		now_playing=shuffle?(items+random):(items+now_playing_index);
+		
 		now_playing->load();
 		now_playing->play();
 		
@@ -39,6 +42,15 @@ class MusicList{
 		now_playing->play();
 		
 			
+		}
+		
+		void autoPlay(){
+			if(!repeat){
+				playNext();
+			}else{
+				(now_playing->music).setPlayingOffset(sf::seconds((float)0.f));
+				now_playing->play();
+			}
 		}
     void print(sf::RenderWindow *window, sf::Event *event,ClickHandler *click_handler,int *v_position){
     	int x=0;

@@ -25,12 +25,13 @@ class MusicPlayer{
 		void drawButton(sf::RenderWindow * window,std::string image,float x, float y,float scale_x,float scale_y){
 			sf::Texture texture;
 			texture.loadFromFile(image);
+				texture.setSmooth(true);
 			sf::Sprite sprite(texture);
 			sprite.setScale(scale_x,scale_y);
 			sprite.setPosition(x,y);
 		
 			
-			
+				
 		window->draw(sprite);
 			
 					
@@ -90,16 +91,22 @@ class MusicPlayer{
 			
 			
 				
-			drawButton(window,std::string(list->shuffle?"./Sprites/_shuffle.png":"./Sprites/_unshuffle.png"),bc_x+160,bc_y,list->shuffle?0.06:0.1,list->shuffle?0.06:0.1);
-			click_handler->addAction(bc_x+160,bc_y,20.f,20.f,30.f,30.f,list->shuffle?"unshuffle":"shuffle");
+			drawButton(window,std::string(list->shuffle?"./Sprites/shuffle.png":"./Sprites/unshuffle.png"),bc_x+160,bc_y,list->shuffle?0.04:0.055,list->shuffle?0.04:0.055);
+			click_handler->addAction(bc_x+160,bc_y,20.f,20.f,30.f,30.f,"toggle shuffle");
 			
-			if(click_handler->triggerAction(event)=="shuffle"){
-				std::cout<<"Shuffle"<<std::endl;
-				list->shuffle=true;
-			}else if(click_handler->triggerAction(event)=="unshuffle"){
-					std::cout<<"Unshuffle"<<std::endl;
-					list->shuffle=false;
-			}
+			if(click_handler->triggerAction(event)=="toggle shuffle"){
+				
+				list->shuffle=!(list->shuffle);
+		}
+		
+				
+			drawButton(window,std::string(list->repeat?"./Sprites/repeat.png":"./Sprites/unrepeat.png"),bc_x-160,bc_y,list->repeat?0.06:0.105,list->repeat?0.06:0.105);
+			click_handler->addAction(bc_x-160,bc_y,20.f,20.f,30.f,30.f,"toggle repeat");
+			
+			if(click_handler->triggerAction(event)=="toggle repeat"){
+				
+				list->repeat=!(list->repeat);
+		}
 			
 			window->draw(now_playing_name);
 			seekbar.render(window,now_playing,click_handler,event);
@@ -107,7 +114,11 @@ class MusicPlayer{
 	}
 
 	
-		
+			int length=(now_playing->music).getDuration().asSeconds();
+			int clength=(now_playing->music).getPlayingOffset().asSeconds();
+			if(length==clength && length!=0.f){
+				list->autoPlay();
+			}
 	
 
 		
