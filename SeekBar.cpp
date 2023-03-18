@@ -2,82 +2,47 @@
 #include <SFML/Graphics.hpp>
 #include "MusicItem.cpp"
 #include "ClickHandler.cpp"
+#include "Text.cpp"
+#include "RectangleShape.cpp"
+#include "Sprite.cpp"
 
 class SeekBar{
 	public:
-		
-	
-	void drawButton(sf::RenderWindow * window,std::string image,float x, float y,float scale_x,float scale_y){
-			sf::Texture texture;
-			texture.loadFromFile(image);
-			texture.setSmooth(true);
-			sf::Sprite sprite(texture);
-			sprite.setScale(scale_x,scale_y);
-			sprite.setPosition(x,y);
-			
-		
-			
-			
-		window->draw(sprite);
-			
-					
-		}
 	void render(sf::RenderWindow *window,MusicItem *now_playing,ClickHandler *click_handler,sf::Event *event ){
-	
-	
-		
-		sf::Font font;
-    	font.loadFromFile("Montserrat.ttf");
-		sf::Text dtext,ctext;
 		
 		//print the duration of now playing
 		int length=(now_playing->music).getDuration().asSeconds();
 		int length_mins=length/60;
 		int length_secs=length%60;
 		
-		dtext.setString(std::to_string(length_mins)+":"+std::to_string(length_secs));
-		dtext.setFont(font);
-		dtext.setCharacterSize(18); 
-		dtext.setFillColor(sf::Color(255,255,255));
-
-		dtext.setPosition(850.f,58.f);
-		
+		Text dtext(std::string("Montserrat.ttf"),222,222,222,std::to_string(length_mins)+":"+std::to_string(length_secs),18,850,58);
+					
 		//print the offset of now playing
 		int clength=(now_playing->music).getPlayingOffset().asSeconds();
 		int clength_mins=clength/60;
 		int clength_secs=clength%60;
-		
-		ctext.setString(std::to_string(clength_mins)+":"+std::to_string(clength_secs)+" / ");
-		ctext.setFont(font);
-		ctext.setCharacterSize(18); 
-		ctext.setFillColor(sf::Color(255,255,255));
-
-		ctext.setPosition(800.f,58.f);
-
+		Text ctext(std::string("Montserrat.ttf"),222,222,222,std::to_string(clength_mins)+":"+std::to_string(clength_secs)+" / ",18,800,58);
+	
         
 		//rectangles
 		float total_width=850;
 		float total_height=10.f;
 		
 		float cwidth=(float)clength/length*total_width;
-		
-		sf::RectangleShape rec_filled(sf::Vector2f(cwidth,7.f));
-		rec_filled.setFillColor(sf::Color(79,179,196));
-		rec_filled.setPosition(50,96);
+		RectangleShape rec_filled(cwidth,7,50,96,79,179,196);
+	
 		
 		
 		//==============
-		
-		sf::RectangleShape rec_empty(sf::Vector2f(total_width-cwidth,5.f));
-		rec_empty.setFillColor(sf::Color(181,235,245));
-		rec_empty.setPosition(50+cwidth,100);
-		
+		RectangleShape rec_empty(total_width-cwidth,5.f,50+cwidth,100,181,235,245);		
 		
         	window->draw(rec_filled);
         	window->draw(rec_empty);
         	window->draw(dtext);
         	window->draw(ctext);
-	drawButton(window,"./Sprites/seek.png",40+cwidth,85,0.5,0.5);
+        	Sprite sprite(std::string("./Sprites/seek.png"),0.5,0.5,40+cwidth,85);
+		
+			window->draw(sprite);
 		click_handler->addAction(475,100,425.f,425.f,9.f,9.f,"seek");
 			if(click_handler->triggerAction(event)=="seek"){
 				float x=(event->mouseButton).x;

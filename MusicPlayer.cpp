@@ -6,6 +6,8 @@
 #include <string>
 #include "ClickHandler.cpp"
 #include "SeekBar.cpp"
+#include "Text.cpp"
+#include "RectangleShape.cpp"
 
 
 class MusicPlayer{
@@ -39,23 +41,16 @@ class MusicPlayer{
 	
 				
 		void print(sf::RenderWindow *window,sf::Event *event,ClickHandler * click_handler){
-				sf::RectangleShape main_rec(sf::Vector2f(950.f,200.f));
-		main_rec.setFillColor(sf::Color(44,51,51,80));
-		main_rec.setPosition(0,0);
+			RectangleShape main_rec(950,200,0,0,44,51,51,80);
+			
 			window->draw(main_rec);
 		if( now_playing!=NULL && now_playing->isLoaded ){
 		//std::cout<<now_playing->text;
 	
 		
-		sf::Font font;
-    	font.loadFromFile("Montserrat.ttf");
-    	sf::Text now_playing_name;
-    	
-    	now_playing_name.setString(now_playing->text);
-		now_playing_name.setFont(font);
-		now_playing_name.setCharacterSize(22); 
-		now_playing_name.setFillColor(sf::Color(255,255,255));
-		now_playing_name.setPosition(50,25);
+		Text now_playing_name(std::string("Montserrat.ttf"),222,222,222,now_playing->text,22,50,25);
+		now_playing_name.truncate(70);
+
 		
 		
 		

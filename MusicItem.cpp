@@ -5,13 +5,17 @@
 #include "ListItem.cpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/audio.hpp>
-
+#include "Text.cpp"
+#include "RectangleShape.cpp"
+#include "Sprite.cpp"
+#include "Clickable.cpp"
 
 #pragma once
 class MusicItem:public ListItem{
 	public:
 		bool isLoaded=false;
 		bool isPlaying=false;
+		bool isFavourite=false;
 		inline static sf::Music music;
 
 		
@@ -29,28 +33,24 @@ class MusicItem:public ListItem{
 		
 	}
 	
-	void render(sf::RenderWindow *window,sf::Color color,int x,int y,float w,float h,int fsize,sf::Color fcolor,sf::Font font,int px,int py){
-		sf::RectangleShape rec(sf::Vector2f(w,h));
-		rec.setFillColor(color);
-		rec.setPosition(x,y);
+	void render(sf::RenderWindow *window,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
 	
-		sf::Text dtext;
-		 if (text.length() > 70) {
-        text = text.substr(0, 70) + "...";
+		RectangleShape rec(w,h,x,y,55,57,62,150);
+	
+		Text text(std::string(font),222,222,222,this->text,size,x+px,y+py);
+		text.truncate(40);
+		
+		Sprite add("./Sprites/add.png",0.025,0.025,x+800,y+20);
+		Sprite fav("./Sprites/heart.png",0.1,0.1,x+850,y+20);
         
-    } 
-		dtext.setString(text);
-		dtext.setFont(font);
-		dtext.setCharacterSize(fsize); 
-		dtext.setFillColor(fcolor);
-
-		dtext.setPosition(x+px,y+py);
-
-        
+    
+		      
 		
 
         	window->draw(rec);
-        	window->draw(dtext);
+        	window->draw(text);
+        	window->draw(add);
+        	window->draw(fav);
 	}
 	
 	

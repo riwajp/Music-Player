@@ -40,7 +40,7 @@ int main()
     
     
     
-    sf::RenderWindow window(sf::VideoMode(950,840),"Music Player",sf::Style::Titlebar|sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(950,840),"MusidssssssssssssssssPlasyer",sf::Style::Titlebar|sf::Style::Close);
     window.setVerticalSyncEnabled(true); 
 	window.setFramerateLimit(60); 
 	
@@ -75,14 +75,8 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	}
 	//background
 	
-		sf::Texture texture;
-			texture.loadFromFile("./Sprites/id1.jpg");
-			texture.setSmooth(true);
-			sf::Sprite sprite(texture);
-			sprite.setScale(1,1);
-			sprite.setPosition(0,0);
-			
-		
+	Sprite sprite(std::string("./Sprites/id1.jpg"),1,1,0,0);
+
 			
 			
 		window.draw(sprite);

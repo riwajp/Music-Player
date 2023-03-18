@@ -8,6 +8,7 @@ struct ClickAction{
 	float x_offset_left,x_offset_right;
 	float y_offset_up,y_offset_down;
 	std::string action;
+	bool left=true;
 	
 };
 
@@ -39,22 +40,25 @@ class ClickHandler{
 
 		
 			
-			if(event!=NULL && event->type==sf::Event::MouseButtonPressed && (event->mouseButton).button==sf::Mouse::Left){
+			if(event!=NULL && event->type==sf::Event::MouseButtonPressed ){
 				
 				//std::cout<<(event->mouseButton).x<<","<<(event->mouseButton).y<<std::endl;
 				float x=(event->mouseButton).x;
 				float y=(event->mouseButton).y;
-				std::cout<<x<<","<<y<<std::endl;
+				
 				
 				for(int i=0;i<=actions_last_index;i++){
 					ClickAction action=actions[i];
+					if((action.left && (event->mouseButton).button==sf::Mouse::Left) ||(!action.left && (event->mouseButton).button==sf::Mouse::Right) ){
+					
 					//std::cout<<std::endl<<action.x<<","<<action.x_offset<<std::endl<<action.y<<","<<action.y_offset<<std::endl;
 					
 					if(x>action.x-action.x_offset_left && x<action.x+action.x_offset_right &&
 						y>action.y-action.y_offset_up && y<action.y+action.y_offset_down ){
-							std::cout<<action.action;
+							
 							triggered_action= action.action;
 						}
+					}
 				}
 			
 		}
