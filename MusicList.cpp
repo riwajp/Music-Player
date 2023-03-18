@@ -24,7 +24,7 @@ class MusicList{
 		
 		srand (time(NULL));
 		int random=rand()%size;
-	
+		now_playing->unload();
 		now_playing_index=shuffle?random:(now_playing_index+1)%size;
 		now_playing=shuffle?(items+random):(items+now_playing_index);
 		
@@ -36,6 +36,7 @@ class MusicList{
 		
 		
 			void playPrevious(){
+				now_playing->unload();
 		now_playing_index=(now_playing_index-1)==-1?size-1 : now_playing_index-1;
 		now_playing=(items+now_playing_index);
 		now_playing->load();
@@ -62,7 +63,7 @@ class MusicList{
 		}else{
 			y=*v_position>210?210 : 210-(size*70-9*70);
 			*v_position=y;
-			std::cout<<*v_position<<std::endl;
+		
 		}
 
     
@@ -84,27 +85,33 @@ class MusicList{
         
 		if(y>=210 && y<=210+560){
 		
-        (items+i)->render(window,color,x,y,890.f,60.f,18,std::string("./Montserrat.ttf"),50,20);
-        click_handler->addAction(x,y,0,950.f,0,60.f,"play new"+(items+i)->text);
+        (items+i)->render(window,event,color,x,y,890.f,60.f,18,std::string("./Montserrat.ttf"),50,20);
+       
     }
 		
 		
 		
 		
 				
-		if(click_handler->triggerAction(event)=="play new"+(items+i)->text){
+	
 		
-		
-				//std::cout<<(items+i)->text;
-				(items+i)->load();
+
+				if((items+i)->isLoaded && i!=now_playing_index ){
+					
+					if(now_playing!=NULL){
+					
+					now_playing->unload();
+				}
 				
-			
-			(items+i)->play();
-			
-				now_playing=(items+i);
-				now_playing_index=i;
+					now_playing=items+i;
+					now_playing->play();
+					now_playing_index=i;
+				
+					
+					
+			}
 						
-}	
+	
         	
         	y+=70;
         	

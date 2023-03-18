@@ -8,7 +8,7 @@
 #include "SeekBar.cpp"
 #include "Text.cpp"
 #include "RectangleShape.cpp"
-
+#pragma once
 
 class MusicPlayer{
 	public:
@@ -41,24 +41,29 @@ class MusicPlayer{
 	
 				
 		void print(sf::RenderWindow *window,sf::Event *event,ClickHandler * click_handler){
+		
+		if(now_playing!=NULL){
+				
+		}
 			RectangleShape main_rec(950,200,0,0,44,51,51,80);
 			
 			window->draw(main_rec);
 		if( now_playing!=NULL && now_playing->isLoaded ){
-		//std::cout<<now_playing->text;
+		
 	
 		
 		Text now_playing_name(std::string("Montserrat.ttf"),222,222,222,now_playing->text,22,50,25);
 		now_playing_name.truncate(70);
-
+		
 		
 		
 		
 		float bc_x=460;
 		float bc_y=140;
 	
-			
-			drawButton(window,std::string(now_playing->isPlaying?"./Sprites/_pause.png":"./Sprites/_play.png"),bc_x,bc_y,0.05,0.05);
+			Sprite pause(now_playing->isPlaying?"_pause.png":"_play.png",0.05,0.05,bc_x,bc_y);
+			window->draw(pause);
+			//drawButton(window,std::string(now_playing->isPlaying?"_pause.png":"_play.png"),bc_x,bc_y,0.05,0.05);
 			click_handler->addAction(bc_x,bc_y,20.f,20.f,30.f,30.f,now_playing->isPlaying?"pause":"play");
 			
 			if(click_handler->triggerAction(event)=="pause"){
@@ -68,8 +73,9 @@ class MusicPlayer{
 			}
 			
 			
-			
-			drawButton(window,std::string("./Sprites/_next.png"),bc_x+80,bc_y,0.05,0.05);
+			Sprite next("_next.png",0.05,0.05,bc_x+80,bc_y);
+			window->draw(next);
+			//drawButton(window,std::string("_next.png"),bc_x+80,bc_y,0.05,0.05);
 			click_handler->addAction(bc_x+80,bc_y,20.f,20.f,30.f,30.f,"play next");
 			if(click_handler->triggerAction(event)=="play next"){
 				list->playNext();
@@ -77,16 +83,18 @@ class MusicPlayer{
 			
 			
 			
-			
-			drawButton(window,std::string("./Sprites/_previous.png"),bc_x-80,bc_y,0.05,0.05);
+			Sprite previous("_previous.png",0.05,0.05,bc_x-80,bc_y);
+			window->draw(previous);
+			//drawButton(window,std::string("_previous.png"),bc_x-80,bc_y,0.05,0.05);
 			click_handler->addAction(bc_x-80,bc_y,20.f,20.f,30.f,30.f,"play previous");
 				if(click_handler->triggerAction(event)=="play previous"){
 				list->playPrevious();
 			}
 			
 			
-				
-			drawButton(window,std::string(list->shuffle?"./Sprites/shuffle.png":"./Sprites/unshuffle.png"),bc_x+160,bc_y,list->shuffle?0.04:0.055,list->shuffle?0.04:0.055);
+			Sprite shuffle(list->shuffle?"shuffle.png":"unshuffle.png",list->shuffle?0.04:0.055,list->shuffle?0.04:0.055,bc_x+160,bc_y);
+			window->draw(shuffle);	
+			//drawButton(window,std::string(list->shuffle?"shuffle.png":"unshuffle.png"),bc_x+160,bc_y,list->shuffle?0.04:0.055,list->shuffle?0.04:0.055);
 			click_handler->addAction(bc_x+160,bc_y,20.f,20.f,30.f,30.f,"toggle shuffle");
 			
 			if(click_handler->triggerAction(event)=="toggle shuffle"){
@@ -94,8 +102,9 @@ class MusicPlayer{
 				list->shuffle=!(list->shuffle);
 		}
 		
-				
-			drawButton(window,std::string(list->repeat?"./Sprites/repeat.png":"./Sprites/unrepeat.png"),bc_x-160,bc_y,list->repeat?0.06:0.105,list->repeat?0.06:0.105);
+			Sprite repeat(list->repeat?"repeat.png":"unrepeat.png",list->repeat?0.06:0.105,list->repeat?0.06:0.105,bc_x-160,bc_y);
+			window->draw(repeat);
+			//drawButton(window,std::string(list->repeat?"repeat.png":"unrepeat.png"),bc_x-160,bc_y,list->repeat?0.06:0.105,list->repeat?0.06:0.105);
 			click_handler->addAction(bc_x-160,bc_y,20.f,20.f,30.f,30.f,"toggle repeat");
 			
 			if(click_handler->triggerAction(event)=="toggle repeat"){

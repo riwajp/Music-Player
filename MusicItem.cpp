@@ -11,7 +11,7 @@
 #include "Clickable.cpp"
 
 #pragma once
-class MusicItem:public ListItem{
+class MusicItem:public ListItem,public Clickable{
 	public:
 		bool isLoaded=false;
 		bool isPlaying=false;
@@ -33,28 +33,8 @@ class MusicItem:public ListItem{
 		
 	}
 	
-	void render(sf::RenderWindow *window,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
 	
-		RectangleShape rec(w,h,x,y,55,57,62,150);
-	
-		Text text(std::string(font),222,222,222,this->text,size,x+px,y+py);
-		text.truncate(40);
-		
-		Sprite add("./Sprites/add.png",0.025,0.025,x+800,y+20);
-		Sprite fav("./Sprites/heart.png",0.1,0.1,x+850,y+20);
-        
-    
-		      
-		
-
-        	window->draw(rec);
-        	window->draw(text);
-        	window->draw(add);
-        	window->draw(fav);
-	}
-	
-	
-	void play(){
+		void play(){
 		isPlaying=true;
 
 	music.play();
@@ -74,8 +54,43 @@ class MusicItem:public ListItem{
 	}
 	void unload(){
 		isLoaded=false;
-		mciSendString(TEXT("close mp3"), NULL, 0, NULL);
+		isPlaying=false;
+	
 		music.stop();
 	}
+	
+	
+	void onClick(){
+		load();
+		play();
+		//std::cout<<"Clicked me"<<std::endl;
+	}
+	
+	void render(sf::RenderWindow *window,sf::Event *event,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
+		
+	
+		RectangleShape rec(w,h,x,y,55,57,62,150);
+	
+		Text text(std::string(font),222,222,222,this->text,size,x+px,y+py);
+		text.truncate(40);
+		
+		Sprite add("add.png",0.025,0.025,x+800,y+20);
+		Sprite fav("heart.png",0.1,0.1,x+850,y+20);
+        
+    
+		      
+		
+
+        	window->draw(rec);
+        	window->draw(text);
+        	window->draw(add);
+        	window->draw(fav);
+        	
+        	setParams( event,x,  y,  0, w, 0, h);
+        
+	}
+	
+	
+
 	
 };

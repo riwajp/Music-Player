@@ -28,8 +28,8 @@ Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=6
-CompilerSettings=0000000000000000000010000
-UnitCount=9
+CompilerSettings=0000000000000000000000000
+UnitCount=15
 
 [VersionInfo]
 Major=1
@@ -141,7 +141,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=MusicList.cpp
+FileName=Text.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -151,7 +151,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=index.cpp
+FileName=RectangleShape.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -161,7 +161,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=MusicItemold.cpp
+FileName=Sprite.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -171,7 +171,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=ClickHandler.cpp
+FileName=Clickable.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -181,7 +181,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=SeekBar.cpp
+FileName=Memory.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit15]
+FileName=textures.cpp
 CompileCpp=1
 Folder=
 Compile=1

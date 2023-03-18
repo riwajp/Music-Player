@@ -28,18 +28,7 @@ public:
 
     
 
-    // function to print the list(all its elements)
-    
-    /*
-    void print()
-    {
-        for (int i = display_index[0]; i <= display_index[1]; i++)
-        {
-            std::cout << (i == current_index ? "=>  " : "    ");
-            std::cout << (items + i)->text << std::endl;
-        }
-    }
-    */
+  
     
     void print(sf::RenderWindow *window, sf::Event *event){
     	int x=0;
@@ -69,7 +58,7 @@ public:
 			sf::Vector2f position = rec.getPosition();
 		
 			if(y>=position.y && y<=position.y+60){
-				//std::cout<<(items+i)->value<<std::endl;
+			
 				
 			
 			

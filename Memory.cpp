@@ -1,12 +1,13 @@
+#include <string>
 struct Playlist{
-	string name;
-	string songs[100];
+	std::string name;
+	std::string songs[100];
 };
 
 class Memory{
 	public:
 		Playlist playlists[10];
-		string favourites[100];
+		std::string favourites[100];
 		
 		void readPlaylists(){
 			

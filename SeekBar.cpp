@@ -40,7 +40,7 @@ class SeekBar{
         	window->draw(rec_empty);
         	window->draw(dtext);
         	window->draw(ctext);
-        	Sprite sprite(std::string("./Sprites/seek.png"),0.5,0.5,40+cwidth,85);
+        	Sprite sprite(std::string("seek.png"),0.5,0.5,40+cwidth,85);
 		
 			window->draw(sprite);
 		click_handler->addAction(475,100,425.f,425.f,9.f,9.f,"seek");
@@ -49,7 +49,7 @@ class SeekBar{
 				
 				sf::Time time=sf::seconds((float)(x-50)/850*length);
 				(now_playing->music).setPlayingOffset(time);
-				std::cout<<x<<std::endl;
+			
 			}	      
 		
 

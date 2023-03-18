@@ -3,13 +3,12 @@
 
 #include "MusicPlayer.cpp"
 #include <SFML/Graphics.hpp>
-
 using namespace std;
 
 
 int main()
 {
-
+	
 	FileScanner scanner;
 
 	
@@ -35,12 +34,16 @@ int main()
     MusicList list(i,list_items);
     	MusicPlayer player(&list);
 
+    //load textures
+    string paths[]={"_next.png","_pause.png","_play.png","_previous.png","_shuffle.png","_stop.png","_unshuffle.png","add.png","heart.png","icon.png","id1.jpg","repeat.png","seek.png","shuffle.png","unheart.png","unrepeat.png","unshuffle.png"};
+    loadTextures(paths,17);
     
     
     
     
     
-    sf::RenderWindow window(sf::VideoMode(950,840),"MusidssssssssssssssssPlasyer",sf::Style::Titlebar|sf::Style::Close);
+    
+    sf::RenderWindow window(sf::VideoMode(950,840),"Muajssssssssssser",sf::Style::Titlebar|sf::Style::Close);
     window.setVerticalSyncEnabled(true); 
 	window.setFramerateLimit(60); 
 	
@@ -65,7 +68,7 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	
 				if(event.type==sf::Event::MouseWheelScrolled){
     		int delta=(event.mouseWheelScroll).delta;
-    		std::cout<<delta<<std::endl;
+    		
     		v_position+=delta*70;
     	}
 		if(event.type==sf::Event::Closed) {
@@ -75,7 +78,7 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	}
 	//background
 	
-	Sprite sprite(std::string("./Sprites/id1.jpg"),1,1,0,0);
+	Sprite sprite(std::string("id1.jpg"),1,1,0,0);
 
 			
 			
@@ -100,8 +103,10 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
                 	pevent=NULL;
 				}
             }
+            
 			list.print(&window,pevent,&click_handler,&v_position);
-		player.now_playing=list.now_playing;
+			player.now_playing=list.now_playing;
+		
 			player.print(&window,pevent,&click_handler);
 			window.display();
 			 if (!can_trigger && clock.getElapsedTime().asSeconds() > delay)

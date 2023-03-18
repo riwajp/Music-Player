@@ -57,21 +57,4 @@ class FileScanner{
 	
 };
 
-/*
-int main(){
 
-	FileScanner files;
-	string * files_p=files.scan("./","mp3");
-	int i=0;
-
-	
-	while(*(files_p+i)!="END"){
-		
-		cout<<*(files_p+i)<<endl;
-		i++;
-	}
-	
-		
-	
-}
-*/
