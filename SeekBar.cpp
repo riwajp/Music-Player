@@ -26,26 +26,26 @@ class SeekBar:public Clickable{
 		clength=(now_playing->music).getPlayingOffset().asSeconds();
 		int clength_mins=clength/60;
 		int clength_secs=clength%60;
-		Text ctext(std::string("Montserrat.ttf"),222,222,222,std::to_string(clength_mins)+":"+std::to_string(clength_secs)+" /  ",18,800,62);
+		Text ctext(std::string("Montserrat.ttf"),222,222,222,std::to_string(clength_mins)+":"+std::to_string(clength_secs)+" /  ",18,790,62);
 	
         
 		//rectangles
-		float total_width=850;
+		float total_width=830;
 		float total_height=10.f;
 		
 		float cwidth=(float)clength/length*total_width;
-		RectangleShape rec_filled(cwidth,7,50,96,79,179,196);
+		RectangleShape rec_filled(cwidth,7,70,96,79,179,196);
 	
 		
 		
 		//==============
-		RectangleShape rec_empty(total_width-cwidth,5.f,50+cwidth,100,181,235,245);		
+		RectangleShape rec_empty(total_width-cwidth,5.f,70+cwidth,100,181,235,245);		
 		
         	window->draw(rec_filled);
         	window->draw(rec_empty);
         	window->draw(dtext);
         	window->draw(ctext);
-        	Sprite sprite(std::string("seek.png"),0.5,0.5,40+cwidth,85);
+        	Sprite sprite(std::string("seek.png"),0.5,0.5,60+cwidth,85);
 		
 			window->draw(sprite);
 			

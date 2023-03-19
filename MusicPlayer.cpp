@@ -36,7 +36,7 @@ class MusicPlayer {
         window -> draw(main_rec);
         if (now_playing != NULL && now_playing -> isLoaded) {
 
-            Text now_playing_name(std::string("Montserrat.ttf"), 222, 222, 222, now_playing -> text, 22, 50, 25);
+            Text now_playing_name(std::string("Montserrat.ttf"), 222, 222, 222, now_playing -> text, 22, 70, 25);
             now_playing_name.truncate(70);
 
             float bc_x = 460;

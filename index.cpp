@@ -3,11 +3,24 @@
 
 #include "MusicPlayer.cpp"
 #include <SFML/Graphics.hpp>
+#include "Sidebar.cpp"
+#include "Options.cpp"
+
+
 using namespace std;
 
-
+	int Memory::favourites_size=0;
+	Playlist  Memory::playlists[10];
+	std::string Memory::favourites[100];
+	Options MusicItem::options=Options(250,300,0,0,100,100,100,150);
 int main()
 {
+	Memory memory;
+	memory.readFavourites();
+	
+
+	
+	
 	
 	FileScanner scanner;
 
@@ -35,17 +48,16 @@ int main()
     	MusicPlayer player(&list);
 
     //load textures
-    string paths[]={"_next.png","_pause.png","_play.png","_previous.png","_shuffle.png","_stop.png","_unshuffle.png","add.png","heart.png","icon.png","id1.jpg","repeat.png","seek.png","shuffle.png","unheart.png","unrepeat.png","unshuffle.png"};
-    loadTextures(paths,17);
+    string paths[]={"cross.png","hamburger.png","_next.png","_pause.png","_play.png","_previous.png","_shuffle.png","_stop.png","_unshuffle.png","add.png","heart.png","icon.png","id1.jpg","repeat.png","seek.png","shuffle.png","unheart.png","unrepeat.png","unshuffle.png"};
+    loadTextures(paths,19);
+    
+	
     
     
     
-    
-    
-    
-    sf::RenderWindow window(sf::VideoMode(950,840),"Muajssssssssssssssser",sf::Style::Titlebar|sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(950,840),"sssssssssssssas",sf::Style::Titlebar|sf::Style::Close);
     window.setVerticalSyncEnabled(true); 
-	window.setFramerateLimit(60); 
+	window.setFramerateLimit(120); 
 	
 	//icon
 	
@@ -62,8 +74,14 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     
 	sf::Event event;
 	int v_position=210;
+	
+	Sidebar sidebar(300,840,0,0,100,100,100,210);
+	
 	while(window.isOpen()){
 	ClickHandler click_handler;
+	
+	
+	
 	while(window.pollEvent(event)){	
 	
 				if(event.type==sf::Event::MouseWheelScrolled){
@@ -79,19 +97,23 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	//background
 	
 	Sprite sprite(std::string("id1.jpg"),1,1,0,0);
-
-			
-			
-		window.draw(sprite);
+	window.draw(sprite);
 		
 			sf::RectangleShape main_rec(sf::Vector2f(950.f,830.f));
 		main_rec.setFillColor(sf::Color(44,51,51,150));
 		main_rec.setPosition(0,0);
 			window.draw(main_rec);
 		
-		
+	
+
 		
 	sf::Event *pevent=&event;
+	
+	
+	
+
+	
+
 	
 	 if (event.type == sf::Event::MouseButtonPressed)
             {
@@ -108,12 +130,22 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 			player.now_playing=list.now_playing;
 		
 			player.print(&window,pevent,&click_handler);
-			window.display();
-			 if (!can_trigger && clock.getElapsedTime().asSeconds() > delay)
+			
+			
+	
+	
+	
+	
+
+	sidebar.render(pevent,&window);
+	
+	window.display();	
+	
+	
+	 if (!can_trigger && clock.getElapsedTime().asSeconds() > delay)
         {
             can_trigger = true;
         }
-			
 }
 
 

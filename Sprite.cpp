@@ -24,6 +24,7 @@ class Sprite:public sf::Sprite{
 		setTexture(*getTexture(image_path));
 		setScale(scale_x,scale_y);
 		setPosition(x,y);
+	
 	}
 	
 	

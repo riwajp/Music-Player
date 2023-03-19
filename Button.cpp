@@ -2,6 +2,7 @@
 #include "Sprite.cpp"
 #include <SFML/Window.hpp>
 
+#pragma once
 class Button:public Clickable{
 	
 	public:
