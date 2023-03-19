@@ -10,6 +10,7 @@
 #include "Sprite.cpp"
 #include "Clickable.cpp"
 
+
 #pragma once
 class MusicItem:public ListItem,public Clickable{
 	public:
@@ -22,16 +23,7 @@ class MusicItem:public ListItem,public Clickable{
 				
 	
 		
-	MusicItem(){
-		
-	}
 
-	MusicItem(std::string ppath,std::string pname){
-		//ListItem(ppath,pname);
-		text=pname;
-		value=ppath;
-		
-	}
 	
 	
 		void play(){
@@ -66,6 +58,19 @@ class MusicItem:public ListItem,public Clickable{
 		//std::cout<<"Clicked me"<<std::endl;
 	}
 	
+	
+	MusicItem(){
+		Clickable();
+		
+	}
+
+	MusicItem(std::string ppath,std::string pname){
+		//ListItem(ppath,pname);
+		text=pname;
+		value=ppath;
+		Clickable();
+		
+	}	
 	void render(sf::RenderWindow *window,sf::Event *event,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
 		
 	
@@ -86,7 +91,9 @@ class MusicItem:public ListItem,public Clickable{
         	window->draw(add);
         	window->draw(fav);
         	
-        	setParams( event,x,  y,  0, w, 0, h);
+        	setParams( event,x,  y,  0, 790, 0, h);
+        	listen([this]() { this->onClick(); });
+        	
         
 	}
 	

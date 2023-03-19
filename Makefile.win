@@ -5,8 +5,8 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = MusicPlayer_private.res
-OBJ      = List.o ListItem.o FileScanner.o MusicPlayer.o MusicItem.o MusicList.o index.o ClickHandler.o SeekBar.o Text.o RectangleShape.o Sprite.o Clickable.o Memory.o textures.o $(RES)
-LINKOBJ  = List.o ListItem.o FileScanner.o MusicPlayer.o MusicItem.o MusicList.o index.o ClickHandler.o SeekBar.o Text.o RectangleShape.o Sprite.o Clickable.o Memory.o textures.o $(RES)
+OBJ      = List.o ListItem.o FileScanner.o MusicPlayer.o MusicItem.o MusicList.o index.o ClickHandler.o SeekBar.o Text.o RectangleShape.o Sprite.o Clickable.o Memory.o textures.o Button.o buttons.o $(RES)
+LINKOBJ  = List.o ListItem.o FileScanner.o MusicPlayer.o MusicItem.o MusicList.o index.o ClickHandler.o SeekBar.o Text.o RectangleShape.o Sprite.o Clickable.o Memory.o textures.o Button.o buttons.o $(RES)
 LIBS     = -L"D:/cppppp/MinGW/lib" -L"D:/cppppp/MinGW/x86_64-w64-mingw32/lib" -static-libstdc++ -static-libgcc -L"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/lib" -lwinmm -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INCS     = -I"D:/cppppp/MinGW/include" -I"D:/cppppp/MinGW/x86_64-w64-mingw32/include" -I"D:/cppppp/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include" -I"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/include"
 CXXINCS  = -I"D:/cppppp/MinGW/include" -I"D:/cppppp/MinGW/x86_64-w64-mingw32/include" -I"D:/cppppp/MinGW/lib/gcc/x86_64-w64-mingw32/11.2.0/include" -I"C:/Users/Lenovo/Desktop/GUIMusic/SFML-2.5.1/include"
@@ -69,6 +69,12 @@ Memory.o: Memory.cpp
 
 textures.o: textures.cpp
 	$(CPP) -c textures.cpp -o textures.o $(CXXFLAGS)
+
+Button.o: Button.cpp
+	$(CPP) -c Button.cpp -o Button.o $(CXXFLAGS)
+
+buttons.o: buttons.cpp
+	$(CPP) -c buttons.cpp -o buttons.o $(CXXFLAGS)
 
 MusicPlayer_private.res: MusicPlayer_private.rc 
 	$(WINDRES) -i MusicPlayer_private.rc --input-format=rc -o MusicPlayer_private.res -O coff  --include-dir Øå

@@ -86,6 +86,7 @@ class MusicList{
 		if(y>=210 && y<=210+560){
 		
         (items+i)->render(window,event,color,x,y,890.f,60.f,18,std::string("./Montserrat.ttf"),50,20);
+        //(items+i)->Clickable::listen([i, this]() { this->items[i].onClick(); });
        
     }
 		

@@ -43,7 +43,7 @@ int main()
     
     
     
-    sf::RenderWindow window(sf::VideoMode(950,840),"Muajssssssssssser",sf::Style::Titlebar|sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(950,840),"Muajssssssssssssssser",sf::Style::Titlebar|sf::Style::Close);
     window.setVerticalSyncEnabled(true); 
 	window.setFramerateLimit(60); 
 	
@@ -57,7 +57,7 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 		
 		
   sf::Clock clock;
-    float delay = 0.2f; // 200 milliseconds delay between events
+    float delay = 0.3f; // 200 milliseconds delay between events
     bool can_trigger = true;
     
 	sf::Event event;

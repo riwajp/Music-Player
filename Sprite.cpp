@@ -15,6 +15,8 @@ class Sprite:public sf::Sprite{
 	};
 
 	sf::Texture texture;
+	Sprite(){
+	}
 	Sprite(std::string image_path,float scale_x,float scale_y,float x, float y){
 		
 		
