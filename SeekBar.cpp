@@ -55,7 +55,7 @@ class SeekBar:public Clickable{
 		listen([this]() { 
 		float x=(this->event->mouseButton).x;
 				
-				sf::Time time=sf::seconds((float)(x-50)/850*length);
+				sf::Time time=sf::seconds((float)(x-70)/830*length);
 				(this->now_playing->music).setPlayingOffset(time);});
 				
 	      

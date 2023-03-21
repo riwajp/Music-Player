@@ -2,9 +2,13 @@
 #include <iostream>
 #pragma once 
 class Clickable{
+		public:
 	float cx, cy,  x_offset_left, x_offset_right, y_offset_up,y_offset_down;
 	sf::Event *event;
-	public:
+
+
+			std::string agent="nothing";
+		bool mouseEnabled=true;
 		Clickable(){
 			
 		}
@@ -13,16 +17,48 @@ class Clickable{
 		
 		template<typename T>
 		void listen(T && lambda){
+			
+				if( mouseEnabled && event!=NULL && event->type==sf::Event::MouseButtonPressed ){
+					
+					float x=(event->mouseButton).x;
+					float y=(event->mouseButton).y;
+						if(agent=="option"){
+		
+		
+		
+	}
+					//std::cout<<"Clicked at: "<<x<<","<<y<<std::endl;
+					//std::cout<<"X offsets"<<x_offset_left<<","<<x_offset_right<<std::endl;
+				
+					if(x>cx-x_offset_left && x<cx+x_offset_right &&
+						y>cy-y_offset_up && y<cy+y_offset_down ){
+							
+							lambda();
+							
+						}
+				
+					
+				}
+		}
+		template<typename T,typename M>
+		void listen(T && lambda,M &&_lambda){
 		
 		
 				if(event!=NULL && event->type==sf::Event::MouseButtonPressed ){
 				
 					float x=(event->mouseButton).x;
 					float y=(event->mouseButton).y;
+				
 					if(x>cx-x_offset_left && x<cx+x_offset_right &&
 						y>cy-y_offset_up && y<cy+y_offset_down ){
+							if(mouseEnabled){
 							
 							lambda();
+						}
+						}else{
+						
+							_lambda();
+							
 						}
 				
 					
@@ -30,8 +66,9 @@ class Clickable{
 		}
 		
 	void printX(){
-		std::cout<<2232322323;
+	
 	}
+	
 		
 		void setParams(sf::Event * event,float cx, float cy, float x_offset_left,float x_offset_right,float y_offset_up,float y_offset_down){
 			this->cx=cx;

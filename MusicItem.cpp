@@ -19,10 +19,13 @@ class MusicItem:public ListItem,public Clickable{
 		bool isLoaded=false;
 		bool isPlaying=false;
 		bool isFavourite=false;
+		bool* mouseCaptured;
+		Options options;
 		inline static sf::Music music;
+	
 		Memory memory;
 		
-		static Options options;
+	
 
 		
 				
@@ -66,6 +69,9 @@ class MusicItem:public ListItem,public Clickable{
 	
 	MusicItem(){
 		Clickable();
+		Options options(250,300,0,0,120,120,120);
+		this->options=options;		
+	
 		
 	}
 
@@ -75,9 +81,13 @@ class MusicItem:public ListItem,public Clickable{
 		value=ppath;
 		Clickable();
 		isFavourite=memory.isFavourite(value);
+		Options options(250,300,0,0,120,120,120);
+		this->options=options;	
+		
+		
 		
 	}	
-	void render(sf::RenderWindow *window,sf::Event *event,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
+	void render(sf::RenderWindow *window,sf::Event *event,Options * options,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
 		
 	
 		RectangleShape rec(w,h,x,y,55,57,62,150);
@@ -98,28 +108,54 @@ class MusicItem:public ListItem,public Clickable{
 		
 	
 		
-		
-		Button add("add.png", 0.025, 0.025, x+800, y+20);
+		bool T=true;
+		Button add(&T,"add.png", 0.025, 0.025, x+800, y+20);
 		add.setParams(event,x+800, y+20, 22.f, 22.f, 30.f, 30.f);
-		add.render(window,[this,x,y](){
-		std::cout<<"trigger";
-		(this->options).setPosition(x+800-250,y+20+30);
-		(this->options).opened=!(this->options).opened;
+		float max_height=300;
+		(this->options).setPosition(x+800-250,y+50+(this->options.height)>=840?y+50-(this->options.height):y+50);
+		(this->options).x=x+800-250;
+		(this->options).y=y+50+(this->options.height)>=840?y+50-(this->options.height):y+50;
+		(this->options).song_path=value;
 		
+		
+		add.render(window,[this,x,y,options](){
+	
+		
+			(this->options).enabled=true;
+		
+		
+		(this->options).opened=!(this->options).opened;
+		*(this->mouseCaptured)=!(*(this->mouseCaptured));
+		*options=this->options;
+		
+	},[this,options](){
+		
+		if((this->options).opened){
+		(this->options).opened=false;
+		*(this->mouseCaptured)=false;
+		*options=this->options;
+		std::cout<<"closed";
+	}
 	});	
 	
+		//options.render(event,window);
 	
-		options.render(event,window);
 	
-	
-		std::cout<<options.height;
 		
-		Button fav(isFavourite?"heart.png":"unheart.png", 0.1, 0.1, x+850, y+20);
+		
+		Button fav(&mouseEnabled,isFavourite?"heart.png":"unheart.png", 0.1, 0.1, x+850, y+20);
         fav.setParams(event,x + 850, y+20, 20.f, 20.f, 30.f, 30.f);
 		fav.render(window,[this](){
 			std::cout<<"Fav";
-			this->isFavourite=!this->isFavourite;
+			if(this->isFavourite){
+				memory.removeFavourites(this->value);
+				
+			}else{
+			
 			memory.addFavourites(this->value);
+		}
+			this->isFavourite=!this->isFavourite;
+			
 		});
 			
 

@@ -1,13 +1,9 @@
-./Music\Avicii - Waiting For Love.ogg
-./Music\Avicii - Waiting For Love.ogg
-./Music\Avicii - Wake Me Up (Official Video).ogg
+./Music\Drake - Gods Plan (Lyric Video).ogg
+./Music\Drake - Gods Plan (Lyric Video).ogg
+./Music\Drake - Gods Plan (Lyric Video).ogg
 ./Music\Billy Joel - Only the Good Die Young.ogg
-./Music\Kehlani,G-Eazy-Good-Life.ogg
-./Music\Rick Astley - Never Gonna Give You Up (Official Music Video).ogg
-./Music\benny blanco, Halsey & Khalid- Eastside (official video).ogg
-./Music\Kehlani,G-Eazy-Good-Life.ogg
-./Music\Rick Astley - Never Gonna Give You Up (Official Music Video).ogg
-./Music\Bruno Mars - The Lazy Song (Official Music Video).ogg
+./Music\Drake - Gods Plan (Lyric Video).ogg
 ./Music\Bruno Mars - The Lazy Song (Official Music Video).ogg
 ./Music\Billy Joel - Only the Good Die Young.ogg
-./Music\Billy Joel - Only the Good Die Young.ogg
+./Music\G-Eazy & Bebe Rexha - Me, Myself & I (Official Video).ogg
+./Music\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse).ogg
