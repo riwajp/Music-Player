@@ -81,7 +81,7 @@ class MusicItem:public ListItem,public Clickable{
 		value=ppath;
 		Clickable();
 		isFavourite=memory.isFavourite(value);
-		Options options(250,300,0,0,120,120,120);
+		Options options(250,300,0,0,70,70,70,220);
 		this->options=options;	
 		
 		

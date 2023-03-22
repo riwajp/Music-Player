@@ -24,7 +24,7 @@ class Options:public RectangleShape{
 	};
 	Options( float width,float height, float x, float y,int r,int g ,int b, int a=255):RectangleShape(width,0,x-250,y,r,g,b,0){
 	this->height=memory.playlists_size*50 + 10 > height? height : memory.playlists_size*50 + 10;
-	max_opacity=255;	
+	max_opacity=a;	
 	max_width=width;
 	max_height=height;
 
@@ -48,7 +48,7 @@ class Options:public RectangleShape{
 	}
 	
 	void render(sf::Event *event,sf::RenderWindow *window){
-		this->height=memory.playlists_size*50 + 10 > max_height? max_height : memory.playlists_size*50 + 10;
+		this->height=memory.playlists_size*50 + 5 > max_height? max_height : memory.playlists_size*50 + 5;
 		
 	
 	/*	Option option(std::string("./Montserrat.ttf"),255,255,255,std::string("Playlist 1"),20,x+5,y+5);
@@ -103,7 +103,7 @@ class Options:public RectangleShape{
 			int y=this->y+15;
 			for(int i=0;i<memory.playlists_size;i++){
 					if(memory.isInPlaylist(song_path,&(this->memory).playlists[i])){
-	RectangleShape rec(250,50,x,y-15,50,50,50,200);
+	RectangleShape rec(250,50,x,y-15,20,20,20,230);
 	window->draw(rec);
 	}
 	RectangleShape rec(250,1,x,y+34,255,255,255,230);

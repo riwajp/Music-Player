@@ -7,3 +7,4 @@
 ./Music\Billy Joel - Only the Good Die Young.ogg
 ./Music\G-Eazy & Bebe Rexha - Me, Myself & I (Official Video).ogg
 ./Music\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse).ogg
+./Music\Kehlani,G-Eazy-Good-Life.ogg

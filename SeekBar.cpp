@@ -20,13 +20,13 @@ class SeekBar:public Clickable{
 		int length_mins=length/60;
 		int length_secs=length%60;
 		
-		Text dtext(std::string("Montserrat.ttf"),222,222,222,std::to_string(length_mins)+":"+std::to_string(length_secs),18,850,62);
+		Text dtext(std::string("Montserrat.ttf"),222,222,222,std::to_string(length_mins)+":"+std::to_string(length_secs),20,850,62);
 					
 		//print the offset of now playing
 		clength=(now_playing->music).getPlayingOffset().asSeconds();
 		int clength_mins=clength/60;
 		int clength_secs=clength%60;
-		Text ctext(std::string("Montserrat.ttf"),222,222,222,std::to_string(clength_mins)+":"+std::to_string(clength_secs)+" /  ",18,790,62);
+		Text ctext(std::string("Montserrat.ttf"),222,222,222,std::to_string(clength_mins)+":"+std::to_string(clength_secs)+" /  ",20,790,62);
 	
         
 		//rectangles

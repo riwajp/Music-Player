@@ -129,7 +129,7 @@ class MusicList{
 		if(y>=210 && y<=210+560){
 		(items+i)->mouseEnabled=mouseEnabled;
 		(items+i)->mouseCaptured=mouseCaptured;
-        (items+i)->render(window,event,options,color,x,y,890.f,60.f,18,std::string("./Montserrat.ttf"),50,20);
+        (items+i)->render(window,event,options,color,x,y,890.f,60.f,20,std::string("./Montserrat.ttf"),50,20);
         //(items+i)->Clickable::listen([i, this]() { this->items[i].onClick(); });
        
     }

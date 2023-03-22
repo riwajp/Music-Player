@@ -81,14 +81,16 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	std::string music_filter="all";
 	list.music_filter=&music_filter;
 	
-	Sidebar sidebar(&mouseCaptured,&music_filter,&playlist,300,840,0,0,100,100,100,210);
-	
+	Sidebar sidebar(&mouseCaptured,&music_filter,&playlist,300,840,0,0,50,50,50,230);
+		std::string background=memory.background;
+	sf::Texture texture;
+	texture.loadFromFile(memory.background);
 	while(window.isOpen()){
 	
 	ClickHandler click_handler;
 	
 	
-	
+
 	
 	while(window.pollEvent(event)){	
 	
@@ -103,10 +105,12 @@ window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	
 	}
 	//background
-
-	sf::Texture texture;
+	if(background!=memory.background){
+	
 	texture.loadFromFile(memory.background);
-		sf::Sprite sprite;
+	background=memory.background;
+}
+	sf::Sprite sprite;
 	sprite.setScale(1,1);
 
 	sprite.setTexture(texture);
