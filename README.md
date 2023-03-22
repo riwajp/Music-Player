@@ -32,9 +32,5 @@ make
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgements
 
-- SFML library for providing a simple and efficient way to create graphical applications
-- Open Source community for the valuable resources and support
-- Your Name for developing this application.
 
