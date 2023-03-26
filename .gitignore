@@ -1,3 +1,5 @@
 /Music
 /filesystem
 /SFML-2.5.1
+*.o
+*.dll

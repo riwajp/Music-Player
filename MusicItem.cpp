@@ -90,7 +90,7 @@ class MusicItem:public ListItem,public Clickable{
 	void render(sf::RenderWindow *window,sf::Event *event,Options * options,sf::Color color,float x,float y,float w,float h,int size,std::string font,int px,int py){
 		
 	
-		RectangleShape rec(w,h,x,y,55,57,62,150);
+		RectangleShape rec(w,h,x,y,55,57,62,100);
 	
 		Text text(std::string(font),222,222,222,this->text,size,x+px,y+py);
 		text.truncate(40);

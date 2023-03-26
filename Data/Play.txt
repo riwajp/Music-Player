@@ -1,0 +1,3 @@
+./Music\Avicii - Wake Me Up (Official Video).ogg
+./Music\Bruno Mars - The Lazy Song (Official Music Video).ogg
+./Music\ROSALIA, J Balvin - Con Altura (Official Video) ft. El Guincho.ogg

@@ -57,7 +57,7 @@ int main()
     
     
 
-    sf::RenderWindow window(sf::VideoMode(950,840),"ssssssssss]ss",sf::Style::Titlebar|sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(950,840),"Musssisc Player",sf::Style::Titlebar|sf::Style::Close);
     window.setVerticalSyncEnabled(true); 
 	
 	//icon

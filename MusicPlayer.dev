@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=6
 CompilerSettings=0000000000000000000000000
-UnitCount=22
+UnitCount=21
 
 [VersionInfo]
 Major=1
@@ -210,27 +210,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit17]
-FileName=buttons.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit18]
-FileName=Sidebar.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit19]
 FileName=Options.cpp
 CompileCpp=1
 Folder=
@@ -240,7 +220,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit20]
+[Unit19]
 FileName=Option.cpp
 CompileCpp=1
 Folder=
@@ -250,8 +230,18 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit21]
+[Unit20]
 FileName=SidebarItem.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=TextField.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -262,6 +252,16 @@ BuildCmd=
 
 [Unit22]
 FileName=TextField.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit17]
+FileName=Sidebar.cpp
 CompileCpp=1
 Folder=
 Compile=1
